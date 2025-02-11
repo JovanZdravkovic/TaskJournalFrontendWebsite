@@ -7,20 +7,24 @@ import { TasksComponent } from './pages/tasks/tasks.component';
 import { TaskHistoryComponent } from './pages/task-history/task-history.component';
 import { HeaderComponent } from './components/header/header.component';
 import { provideHttpClient } from '@angular/common/http';
+import { LoginComponent } from './pages/login/login.component';
+import { AuthGuard } from './services/auth/auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksComponent,
     TaskHistoryComponent,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
   providers: [
-    provideHttpClient()
+    provideHttpClient(),
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

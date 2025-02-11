@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { BaseService } from '../base/base.service';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -7,6 +7,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+
+  user = signal<any>(null);
+  loggedIn = computed(() => {
+    return (this.user !== null && Object.keys(this.user).length !== 0);
+  })
 
   constructor(private baseService: BaseService) { }
 
