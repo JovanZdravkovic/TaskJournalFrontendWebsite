@@ -3,3 +3,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+button:hover {
+    cursor: pointer;
+}
+
+input:focus {
+    border-color: #23c686;
+    outline: none;
+}

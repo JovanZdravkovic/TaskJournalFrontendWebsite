@@ -16,7 +16,7 @@ export class AuthService {
   constructor(private baseService: BaseService) { }
 
   authenticate(): Observable<any> {
-    return this.baseService.get('auth/authenticate');
+    return this.baseService.post('auth/authenticate');
   }
 
   login(username: string, password: string): Observable<any> {

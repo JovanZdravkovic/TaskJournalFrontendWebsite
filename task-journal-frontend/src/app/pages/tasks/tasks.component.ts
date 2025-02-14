@@ -16,7 +16,6 @@ export class TasksComponent implements OnInit{
   ngOnInit(): void {
     this.baseService.get("tasks").subscribe((data: any) => {
       this.tasks = data;
-      console.log(this.tasks);
     });
   }
 

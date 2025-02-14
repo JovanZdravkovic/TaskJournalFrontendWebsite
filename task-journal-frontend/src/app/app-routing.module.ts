@@ -7,6 +7,8 @@ import { LoginComponent } from './pages/login/login.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard] },
+  { path: '',   redirectTo: '/tasks', pathMatch: 'full' },
+  { path: '**', redirectTo: '/tasks' },
 ];
 
 @NgModule({

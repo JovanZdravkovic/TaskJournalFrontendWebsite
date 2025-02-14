@@ -4,11 +4,59 @@
             <h1 class="flex-none m-auto text-white text-5xl">Task Journal</h1>
         </div>
         <form class="flex flex-col p-4" [formGroup]="loginForm" (ngSubmit)="login()">
-            <label class="mx-3 py-2 pb-1" for="username_input">Username</label>
-            <input class="inline p-2 m-3 grow border-2 border-gray-100" id="username_input" formControlName="username" placeholder="Enter your username"/>
-            <label class="mx-3 py-2 pb-1" for="password_input">Password</label>
-            <input class="inline p-2 m-3 grow border-2 border-gray-100" id="password_input" formControlName="password" placeholder="Enter your password"/>
-            <button class="m-3 mx-3 p-2 rounded-sm bg-[#23C686] hover:bg-[#1CA670] text-white text-lg" type="submit">SUBMIT</button>
+            <label
+                class="w-fit mx-3 py-2 pb-0"
+                for="username_input"
+            >
+            Username
+            </label>
+            <input 
+                class="inline p-2 m-3 grow border-2 border-gray-100" 
+                id="username_input" 
+                formControlName="username" 
+                placeholder="Enter your username"
+            />
+            @if(errorMap.has('username') && errorMap.get('username')) {
+                <div class="text-[#F32013] mx-3">
+                    * Username is required
+                </div>
+            }
+            <div class="flex flex-row">
+                <label
+                    class="block w-fit mx-3 mr-2 py-2 pb-0"
+                    for="password_input"
+                >
+                Password
+                </label>
+                <button title="Show password" type="button" (click)="showPassword = !showPassword">
+                    <img 
+                        class="h-6 w-6 self-center mt-2"
+                        [src]="
+                        showPassword
+                        ? 'app/utils/assets/eye_crossed.svg'
+                        : 'app/utils/assets/eye.svg'"
+                        alt="" 
+                    />
+                </button>
+            </div>
+            <input 
+                class="inline p-2 m-3 grow border-2 border-gray-100" 
+                id="password_input" 
+                formControlName="password" 
+                [type]="showPassword ? 'text' : 'password'"
+                placeholder="Enter your password"
+            />
+            @if(errorMap.has('password') && errorMap.get('password')) {
+                <div class="text-[#F32013] mx-3">
+                    * Password is required
+                </div>
+            }
+            <button 
+                class="m-3 mx-3 p-2 rounded-sm bg-[#23C686] hover:bg-[#1CA670] text-white text-lg" 
+                type="submit"
+            >
+            Submit
+            </button>
         </form>
     </div>
 </div>
