@@ -14,14 +14,24 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): MaybeAsync<GuardResult> {
     return new Observable<boolean>((observer) => {
+      let authRequired = route.data['authRequired'];
       this.authService.authenticate().subscribe((data: any) => {
         if(data !== null && Object.keys(data).length !== 0) {
           this.authService.user.set(data);
-          observer.next(true);
+          if(!authRequired) {
+            this.router.navigateByUrl('/');
+            observer.next(false);
+          } else {
+            observer.next(true);
+          }
         } else{
           this.authService.user.set(null);
-          this.router.navigateByUrl('/login');
-          observer.next(false);
+          if(authRequired) {
+            this.router.navigateByUrl('/login');
+            observer.next(false);
+          } else {
+            observer.next(true);
+          }
         }
       });
     })

@@ -5,8 +5,8 @@ import { AuthGuard } from './services/auth/auth.guard';
 import { LoginComponent } from './pages/login/login.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard], data: { authRequired: false } },
+  { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard], data: { authRequired: true } },
   { path: '',   redirectTo: '/tasks', pathMatch: 'full' },
   { path: '**', redirectTo: '/tasks' },
 ];
