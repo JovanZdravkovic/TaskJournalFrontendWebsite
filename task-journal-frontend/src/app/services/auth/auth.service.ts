@@ -20,7 +20,6 @@ export class AuthService {
   }
 
   login(username: string, password: string): Observable<any> {
-    // TODO: Add password hashing
     return this.baseService.post(
       'auth/login',
       {
