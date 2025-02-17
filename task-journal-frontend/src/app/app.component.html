@@ -1,1 +1,6 @@
-<router-outlet></router-outlet>
+<div class="h-full w-full">
+    @if (loggedIn) {
+        <app-header></app-header>
+    }
+    <router-outlet></router-outlet>
+</div>

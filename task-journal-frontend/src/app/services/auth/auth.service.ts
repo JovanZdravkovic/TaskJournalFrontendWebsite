@@ -10,7 +10,8 @@ export class AuthService {
 
   user = signal<any>(null);
   loggedIn = computed(() => {
-    return (this.user !== null && Object.keys(this.user).length !== 0);
+    const currentUser = this.user();
+    return (currentUser !== null && Object.keys(currentUser).length !== 0);
   })
 
   constructor(private baseService: BaseService) { }
