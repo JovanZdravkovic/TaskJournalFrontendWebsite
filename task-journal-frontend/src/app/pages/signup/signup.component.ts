@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BaseService } from '../../services/base/base.service';
-import { catchError, of, throwError } from 'rxjs';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -34,7 +34,14 @@ export class SignupComponent {
   }
 
   checkErrors(): boolean {
+    this.requestError = false;
     let errorExist = false;
+    if(this.signupForm.hasError('passwordDisparity')) {
+      this.errorMap.set('signupForm', 'passwordDisparity');
+      errorExist = true;
+    } else {
+      this.errorMap.set('signupForm', '');
+    }
     Object.keys(this.signupForm.controls).forEach((controlName) => {
       if(this.signupForm.get(controlName)?.hasError('required')) {
         this.errorMap.set(controlName, 'required');

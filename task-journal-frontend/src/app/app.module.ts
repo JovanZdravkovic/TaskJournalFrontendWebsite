@@ -12,6 +12,7 @@ import { AuthGuard } from './services/auth/auth.guard';
 import {ReactiveFormsModule} from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { ConfirmPasswordDirective } from './utils/validators/utils/validators/confirm-password.directive';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SignupComponent } from './pages/signup/signup.component';
     HeaderComponent,
     LoginComponent,
     ProfileComponent,
-    SignupComponent
+    SignupComponent,
+    ConfirmPasswordDirective
   ],
   imports: [
     BrowserModule,

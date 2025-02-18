@@ -2,7 +2,7 @@
     <div class="flex flex-col w-full h-24 bg-[#23C686] rounded-t-xl">
         <h1 class="flex-none m-auto text-white text-5xl">Task Journal</h1>
     </div>
-    <form class="flex flex-col p-4" [formGroup]="signupForm" (ngSubmit)="signup()">
+    <form class="flex flex-col p-4" [formGroup]="signupForm" (ngSubmit)="signup()" appConfirmPassword>
         <label
             class="w-fit mx-3 py-2 pb-0"
             for="username_input"
@@ -82,6 +82,11 @@
         @if(errorMap.has('confirmPassword') && errorMap.get('confirmPassword') === 'required') {
             <div class="text-[#F32013] mx-3">
                 * Confirming entered password is required
+            </div>
+        }
+        @if(errorMap.has('signupForm') && errorMap.get('signupForm') === 'passwordDisparity') {
+            <div class="text-[#F32013] mx-3">
+                Passwords don't match
             </div>
         }
         @if(requestError) {
