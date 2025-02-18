@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { BaseService } from '../../services/base/base.service';
 import { FormControl, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { catchError, of } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent {
   });
   showPassword: boolean = false;
   errorMap: Map<string, boolean> = new Map<string, boolean>();
+  requestError: boolean = false;
 
   constructor(
     private baseService: BaseService,
@@ -45,7 +47,14 @@ export class LoginComponent {
   login() {
     let errors: boolean = this.checkErrors();
     if(!errors) {
-      this.baseService.post('auth/login/', this.createPayload()).subscribe((data) => {
+      this.baseService.post('auth/login/', this.createPayload())
+      .pipe(
+        catchError((error) => {
+          this.requestError = true;
+          return of('error');
+        })
+      )
+      .subscribe((data) => {
         if(data === null) {
           this.router.navigateByUrl('/tasks');
         }

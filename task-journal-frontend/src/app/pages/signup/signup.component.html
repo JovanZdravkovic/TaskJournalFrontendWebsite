@@ -2,7 +2,7 @@
     <div class="flex flex-col w-full h-24 bg-[#23C686] rounded-t-xl">
         <h1 class="flex-none m-auto text-white text-5xl">Task Journal</h1>
     </div>
-    <form class="flex flex-col p-4" [formGroup]="loginForm" (ngSubmit)="login()">
+    <form class="flex flex-col p-4" [formGroup]="signupForm" (ngSubmit)="signup()">
         <label
             class="w-fit mx-3 py-2 pb-0"
             for="username_input"
@@ -15,9 +15,31 @@
             formControlName="username" 
             placeholder="Enter your username"
         />
-        @if(errorMap.has('username') && errorMap.get('username')) {
+        @if(errorMap.has('username') && errorMap.get('username') === 'required') {
             <div class="text-[#F32013] mx-3">
                 * Username is required
+            </div>
+        }
+        <label
+            class="w-fit mx-3 py-2 pb-0"
+            for="email_input"
+        >
+        Email
+        </label>
+        <input 
+            class="inline p-2 m-3 grow border-2 border-gray-100" 
+            id="email_input" 
+            formControlName="email" 
+            placeholder="Enter your email"
+        />
+        @if(errorMap.has('email') && errorMap.get('email') === 'required') {
+            <div class="text-[#F32013] mx-3">
+                * Email is required
+            </div>
+        }
+        @else if(errorMap.has('email') && errorMap.get('email') === 'email') {
+            <div class="text-[#F32013] mx-3">
+                * Email format is invalid
             </div>
         }
         <div class="flex flex-row">
@@ -45,14 +67,26 @@
             [type]="showPassword ? 'text' : 'password'"
             placeholder="Enter your password"
         />
-        @if(errorMap.has('password') && errorMap.get('password')) {
-            <div class="text-[#F32013] mx-3">
+        @if(errorMap.has('password') && errorMap.get('password') === 'required') {
+            <div class="text-[#F32013] mx-3 mb-3">
                 * Password is required
+            </div>
+        }
+        <input 
+            class="inline p-2 m-3 mt-0 grow border-2 border-gray-100" 
+            id="confirm_password_input" 
+            formControlName="confirmPassword" 
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Confirm entered password"
+        />
+        @if(errorMap.has('confirmPassword') && errorMap.get('confirmPassword') === 'required') {
+            <div class="text-[#F32013] mx-3">
+                * Confirming entered password is required
             </div>
         }
         @if(requestError) {
             <div class="text-[#F32013] mx-3">
-                Login error
+                Signup error
             </div>
         }
         <button 
@@ -61,8 +95,5 @@
         >
         Submit
         </button>
-        <div class="mx-3">
-            Don't have an account?<a class="ml-2" href="/signup">Sign up</a>
-        </div>
     </form>
 </div>
