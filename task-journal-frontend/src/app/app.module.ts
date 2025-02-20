@@ -13,6 +13,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ConfirmPasswordDirective } from './utils/validators/utils/validators/confirm-password.directive';
+import { IconComponent } from './components/icon/icon.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ConfirmPasswordDirective } from './utils/validators/utils/validators/co
     LoginComponent,
     ProfileComponent,
     SignupComponent,
-    ConfirmPasswordDirective
+    ConfirmPasswordDirective,
+    IconComponent
   ],
   imports: [
     BrowserModule,
