@@ -14,6 +14,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ConfirmPasswordDirective } from './utils/validators/utils/validators/confirm-password.directive';
 import { IconComponent } from './components/icon/icon.component';
+import { TaskRowComponent } from './components/task-row/task-row.component';
+import { SelectComponent } from './components/select/select.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -25,13 +28,16 @@ import { IconComponent } from './components/icon/icon.component';
     ProfileComponent,
     SignupComponent,
     ConfirmPasswordDirective,
-    IconComponent
+    TaskRowComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    NgSelectModule,
+    SelectComponent,
+    IconComponent
+],
   providers: [
     provideHttpClient(),
     AuthGuard

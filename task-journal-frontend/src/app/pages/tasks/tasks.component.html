@@ -1,1 +1,45 @@
-<p>This is tasks page</p>
+<div class="h-[70%] w-[40%] min-w-[40rem] mx-auto my-14 p-4 bg-white rounded-3xl shadow-lg">
+    <div class="flex flex-col w-full h-full gap-4 overflow-auto mt-2">
+        <div class="flex flex-row">
+            <div class="p-2 w-fit ml-4 mr-2 border-2 border-gray-100 rounded-xl">
+                <i class="fas fa-search text-gray-400"></i>
+                <input
+                    class="ml-2 w-44"
+                    placeholder="Search"
+                />
+            </div>
+            <div class="grow max-w-64 p-2 mx-2 border-2 border-gray-100 rounded-xl">
+                <app-select
+                    [items]="icons"
+                    [multiple]="false"
+                    [icons]="true"
+                    [placeholder]="'Select icon'"
+                >
+                </app-select>
+            </div>
+            <button 
+                type="button" 
+                class="mx-2 p-2 text-white text-base bg-[#23C686] rounded-xl hover:bg-[#1CA670] duration-300"
+                title="Sort by deadline"
+            >
+                <i class="fa-regular fa-calendar-days"></i>
+                Deadline
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+            <button 
+                type="button"
+                class="mx-2 p-2 text-white text-base bg-[#23C686] rounded-xl hover:bg-[#1CA670] duration-300"
+                title="Sort by starred"
+            >
+                <i class="fa-solid fa-star"></i>
+                Starred
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+        </div>
+        @for(task of tasks; track $index) {
+            <app-task-row
+                [task]="task"
+            ></app-task-row>
+        }
+    </div>
+</div>

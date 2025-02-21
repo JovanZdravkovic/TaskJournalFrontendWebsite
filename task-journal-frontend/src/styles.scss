@@ -12,3 +12,7 @@ input:focus {
     border-color: #23c686;
     outline: none;
 }
+
+ng-select .ng-placeholder {
+    @apply text-gray-400;
+}

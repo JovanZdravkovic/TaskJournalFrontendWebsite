@@ -1,0 +1,21 @@
+<ng-select
+    [items]="items"
+    [multiple]="multiple"
+    [bindLabel]="bindLabel"
+    [bindValue]="bindValue"
+    [placeholder]="placeholder"
+    class="w-full self-center"
+>
+    <ng-template ng-option-tmp let-item="item">
+        @for(item of items; track item.id) {
+            <div class="flex flex-row gap-3 my-2">
+                @if(icons) {
+                    <app-icon
+                        [iconName]="item.id"
+                    ></app-icon>
+                }
+                <div class="text-base self-center">{{ item.label }}</div>
+            </div>
+        }
+    </ng-template>
+</ng-select>

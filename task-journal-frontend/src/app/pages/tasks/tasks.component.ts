@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseService } from '../../services/base/base.service';
+import { taskIcons } from '../../components/select/select.constants';
 
 @Component({
   selector: 'app-tasks',
@@ -7,7 +8,9 @@ import { BaseService } from '../../services/base/base.service';
   styleUrl: './tasks.component.scss'
 })
 export class TasksComponent implements OnInit{
+  toggleView: boolean = false;
   tasks: any = [];
+  icons = taskIcons;
 
   constructor(private baseService: BaseService) {
 
