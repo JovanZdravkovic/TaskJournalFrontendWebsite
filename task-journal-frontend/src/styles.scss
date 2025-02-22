@@ -5,14 +5,27 @@
 @tailwind utilities;
 
 button:hover {
-    cursor: pointer;
+    @apply cursor-pointer;
 }
 
 input:focus {
-    border-color: #23c686;
+    @apply border-[#23C686];
     outline: none;
 }
 
 ng-select .ng-placeholder {
     @apply text-gray-400;
 }
+
+.ng-dropdown-panel {
+    @apply whitespace-normal;
+    @apply h-fit;
+    @apply bg-white;
+    @apply p-2;
+    @apply rounded-xl
+}
+
+.ng-select-container.ng-has-value .ng-placeholder {
+    @apply hidden;
+  }
+  

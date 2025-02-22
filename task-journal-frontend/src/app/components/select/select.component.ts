@@ -1,6 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
 import { IconComponent } from "../icon/icon.component";
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-select',
@@ -11,11 +13,14 @@ import { IconComponent } from "../icon/icon.component";
     NgLabelTemplateDirective,
     NgOptionTemplateDirective,
     NgSelectComponent,
-    IconComponent
+    IconComponent,
+    CommonModule,
+    FormsModule
 ],
 })
-export class SelectComponent {
+export class SelectComponent{
   @Input() items: any[] = [];
+  @Input() value: any = null;
   @Input() multiple: boolean = false;
   @Input() icons: boolean = false;
   @Input() placeholder: string = '';

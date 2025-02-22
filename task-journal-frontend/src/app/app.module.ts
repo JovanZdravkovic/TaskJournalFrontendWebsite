@@ -17,6 +17,7 @@ import { IconComponent } from './components/icon/icon.component';
 import { TaskRowComponent } from './components/task-row/task-row.component';
 import { SelectComponent } from './components/select/select.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
     ReactiveFormsModule,
     NgSelectModule,
     SelectComponent,
-    IconComponent
+    IconComponent,
+    FormsModule
 ],
   providers: [
     provideHttpClient(),
