@@ -15,8 +15,8 @@
                 [iconSize]="'small'"
             ></app-icon>
         }
-        <div class="text-ellipsis text-base self-center">{{item.label}}</div>
-        <span class="ng-value-icon right self-center" (click)="clearValue(item.id)" aria-hidden="true">×</span>
+        <div class="text-ellipsis text-base self-center text-white">{{item.label}}</div>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" (click)="clearValue(item.id)" class="h-4 w-4 self-center" fill="#FFFFFF"><path d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"/></svg>
     </ng-template>
 
     <ng-template ng-option-tmp let-item="item" let-index="index">

@@ -32,8 +32,9 @@ ng-select .ng-placeholder {
 .ng-value {
     @apply flex;
     @apply flex-row;
-    @apply gap-1;
+    @apply gap-2;
     @apply p-1;
+    @apply px-2;
     @apply bg-[#2DEDA4];
     @apply rounded-xl;
     @apply m-1;
