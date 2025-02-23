@@ -16,9 +16,9 @@ import { FormsModule } from '@angular/forms';
     IconComponent,
     CommonModule,
     FormsModule
-],
+  ],
 })
-export class SelectComponent{
+export class SelectComponent {
   @Input() items: any[] = [];
   @Input() value: any = null;
   @Input() multiple: boolean = false;
@@ -26,4 +26,13 @@ export class SelectComponent{
   @Input() placeholder: string = '';
   @Input() bindValue: string = 'id';
   @Input() bindLabel: string = 'label';
+  @Input() clearable: boolean = true;
+
+  clearValue(id: any): void {
+    let index = this.value.indexOf(id);
+    if(index !== -1) {
+      this.value.splice(index, 1);
+    }
+    this.value = [...this.value]; // Change detection mechanism from ng-select documentation  
+  }
 }

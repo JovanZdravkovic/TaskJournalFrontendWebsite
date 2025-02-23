@@ -4,19 +4,29 @@
     [bindLabel]="bindLabel"
     [bindValue]="bindValue"
     [placeholder]="placeholder"
+    [clearable]="clearable"
     class="w-full self-center"
     [(ngModel)]="value"
 >
-        @for(item of items; track item.id) {
-            <ng-template ng-option-tmp let-item="item">
-                <div class="flex flex-row gap-3 my-2">
-                    @if(icons) {
-                        <app-icon
-                            [iconName]="item.id"
-                        ></app-icon>
-                    }
-                    <div class="text-base self-center">{{ item.label }}</div>
-                </div>
-            </ng-template>
+    <ng-template ng-label-tmp let-item="item">
+        @if(icons) {
+            <app-icon
+                [iconName]="item.id"
+                [iconSize]="'small'"
+            ></app-icon>
         }
+        <div class="text-ellipsis text-base self-center">{{item.label}}</div>
+        <span class="ng-value-icon right self-center" (click)="clearValue(item.id)" aria-hidden="true">×</span>
+    </ng-template>
+
+    <ng-template ng-option-tmp let-item="item" let-index="index">
+        <div class="flex flex-row gap-3 my-2">
+            @if(icons) {
+                <app-icon
+                    [iconName]="item.id"
+                ></app-icon>
+            }
+            <div class="text-base self-center">{{ item.label }}</div>
+        </div>
+    </ng-template>
 </ng-select>
