@@ -7,4 +7,11 @@ import { Component, Input } from '@angular/core';
 })
 export class TaskRowComponent {
   @Input() task: any = {};
+  @Input() completeTaskCallback: Function = () => {};
+
+  constructor() {}
+
+  completeTask(): void {
+    this.completeTaskCallback(this.task);
+  }
 }

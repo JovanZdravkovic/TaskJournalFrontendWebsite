@@ -4,5 +4,10 @@
         class="mx-4"
     ></app-icon>
     <div class="ml-8 self-center text-ellipsis text-base">{{task.taskName}}</div>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="h-8 w-8 ml-auto mr-6 self-center" fill="#878787"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+    <div 
+        class="cursor-pointer flex flex-row h-10 w-10 ml-auto mr-6 rounded-full self-center bg-[#2DEDA4] hover:bg-[#23C686] duration-200"
+        (click)="completeTask()"
+    >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="m-auto h-6 w-6 self-center" fill="#FFFFFF"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+    </div>
 </div>
