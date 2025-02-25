@@ -8,8 +8,10 @@ module.exports = {
         primary: "#23C686",
         "primary-light": "#2DEDA4",
         "primary-dark": "#1CA670",
-        secondary: "#1D3853",
-        "secondary-light": "#7A9295",
+        secondary: "#FC9D45",
+        "secondary-dark": "#F28B2C",
+        dark: "#1D3853",
+        "dark-light": "#7A9295",
         "gray-light-100": "#FAFAFA",
         "gray-light-200": "#F5F5F5",
         danger: "#F32013"

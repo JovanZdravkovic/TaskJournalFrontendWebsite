@@ -18,6 +18,7 @@ import { TaskRowComponent } from './components/task-row/task-row.component';
 import { SelectComponent } from './components/select/select.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
+import { NewTaskComponent } from './pages/new-task/new-task.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     SignupComponent,
     ConfirmPasswordDirective,
     TaskRowComponent,
+    NewTaskComponent,
   ],
   imports: [
     BrowserModule,
