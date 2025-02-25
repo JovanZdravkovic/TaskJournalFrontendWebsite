@@ -27,6 +27,7 @@ export class SelectComponent {
   @Input() bindValue: string = 'id';
   @Input() bindLabel: string = 'label';
   @Input() clearable: boolean = true;
+  @Input() searchable: boolean = true;
 
   clearValue(id: any): void {
     let index = this.value.indexOf(id);

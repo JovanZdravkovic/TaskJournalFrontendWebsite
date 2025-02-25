@@ -19,6 +19,7 @@ import { SelectComponent } from './components/select/select.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
+import { DatePickerComponent } from './components/date-picker/date-picker.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { NewTaskComponent } from './pages/new-task/new-task.component';
     ConfirmPasswordDirective,
     TaskRowComponent,
     NewTaskComponent,
+    DatePickerComponent,
   ],
   imports: [
     BrowserModule,
