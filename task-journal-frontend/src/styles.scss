@@ -1,8 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+@theme {
+    --color-primary: #23C686;
+    --color-primary-light: #2DEDA4;
+    --color-primary-dark: #1CA670;
+    --color-secondary: #FC9D45;
+    --color-secondary-dark: #F28B2C;
+    --color-dark: #1D3853;
+    --color-dark-light: #7A9295;
+    --color-gray-light-100: #FAFAFA;
+    --color-gray-light-200: #F5F5F5;
+    --color-danger: #F32013;
+}
 
 body {
     font-family: 'Inter', sans-serif;
@@ -13,7 +22,7 @@ button:hover {
 }
 
 input:focus, textarea:focus {
-    @apply border-[#23C686];
+    @apply border-primary;
     outline: none;
 }
 
