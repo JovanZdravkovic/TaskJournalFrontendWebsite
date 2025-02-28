@@ -9,7 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { provideHttpClient } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './services/auth/auth.guard';
-import {ReactiveFormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ConfirmPasswordDirective } from './utils/validators/utils/validators/confirm-password.directive';
@@ -42,7 +42,8 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     NgSelectModule,
     SelectComponent,
     IconComponent,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
 ],
   providers: [
     provideHttpClient(),

@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
 import { IconComponent } from "../icon/icon.component";
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-select',
@@ -15,12 +15,15 @@ import { FormsModule } from '@angular/forms';
     NgSelectComponent,
     IconComponent,
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
 })
 export class SelectComponent {
   @Input() items: any[] = [];
   @Input() value: any = null;
+  @Input() control: string = '';
+  @Input() form: FormGroup = new FormGroup({});
   @Input() multiple: boolean = false;
   @Input() icons: boolean = false;
   @Input() placeholder: string = '';
