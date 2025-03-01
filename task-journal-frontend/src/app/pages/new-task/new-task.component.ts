@@ -16,7 +16,7 @@ export class NewTaskComponent {
     taskName: new FormControl(null, Validators.required),
     taskIcon: new FormControl(null, Validators.required),
     taskDesc: new FormControl(null, Validators.required),
-    taskStarred: new FormControl(null, Validators.required),
+    taskStarred: new FormControl(false, Validators.required),
   });
 
   constructor(
@@ -48,5 +48,9 @@ export class NewTaskComponent {
       )
       .subscribe((data) => {});
     }
+  }
+
+  getStarredControl() {
+    return this.taskForm.get('taskStarred') as FormControl;
   }
 }

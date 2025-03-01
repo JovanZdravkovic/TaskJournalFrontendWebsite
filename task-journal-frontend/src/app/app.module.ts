@@ -20,6 +20,7 @@ import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule } from '@angular/forms';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
+import { StarCheckboxComponent } from './components/star-checkbox/star-checkbox.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
     TaskRowComponent,
     NewTaskComponent,
     DatePickerComponent,
+    StarCheckboxComponent,
   ],
   imports: [
     BrowserModule,

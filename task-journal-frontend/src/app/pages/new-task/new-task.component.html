@@ -9,12 +9,18 @@
         >
         Name
         </label>
-        <input 
-            class="inline p-2 mx-2 grow max-w-64 border-2 border-gray-100 rounded-xl placeholder-gray-400" 
-            id="task_name_input" 
-            placeholder="Enter task name"
-            formControlName="taskName"
-        />
+        <div class="flex flex-row">
+            <input 
+                class="inline p-2 mx-2 grow max-w-64 border-2 border-gray-100 rounded-xl placeholder-gray-400" 
+                id="task_name_input" 
+                placeholder="Enter task name"
+                formControlName="taskName"
+            />
+            <app-star-checkbox
+                [control]="getStarredControl()"
+                class="mx-2 self-center"
+            ></app-star-checkbox>
+        </div>
         <label
             class="h-fit w-fit mx-2"
             for="task_icon_input"
