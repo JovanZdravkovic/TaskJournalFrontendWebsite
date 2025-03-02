@@ -17,6 +17,7 @@ export class NewTaskComponent {
     taskIcon: new FormControl(null, Validators.required),
     taskDesc: new FormControl(null, Validators.required),
     taskStarred: new FormControl(false, Validators.required),
+    deadline: new FormControl(null)
   });
 
   constructor(
