@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
 import { IconComponent } from "../icon/icon.component";
 import { CommonModule } from '@angular/common';
-import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-select',
@@ -21,9 +21,10 @@ import { AbstractControl, FormControl, FormGroup, FormsModule, ReactiveFormsModu
 })
 export class SelectComponent {
   @Input() items: any[] = [];
-  @Input() value: any = null;
-  @Input() control: string = '';
-  @Input() form: FormGroup = new FormGroup({});
+  @Input() control: string = 'value';
+  @Input() form: FormGroup = new FormGroup({
+    value: new FormControl(null)
+  });
   @Input() multiple: boolean = false;
   @Input() icons: boolean = false;
   @Input() placeholder: string = '';
@@ -33,10 +34,13 @@ export class SelectComponent {
   @Input() searchable: boolean = true;
 
   clearValue(id: any): void {
-    let index = this.value.indexOf(id);
+    let value: any[] = this.form.get(this.control)!.value;
+    let index = value.indexOf(id);
     if(index !== -1) {
-      this.value.splice(index, 1);
+      value.splice(index, 1);
+      this.form.patchValue({
+        [this.control]: value
+      });
     }
-    this.value = [...this.value]; // Change detection mechanism from ng-select documentation  
   }
 }

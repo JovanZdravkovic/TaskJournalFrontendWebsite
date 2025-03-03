@@ -16,7 +16,7 @@ export class NewTaskComponent {
     taskName: new FormControl(null, Validators.required),
     taskIcon: new FormControl(null, Validators.required),
     taskDesc: new FormControl(null, Validators.required),
-    taskStarred: new FormControl(false, Validators.required),
+    starred: new FormControl(false, Validators.required),
     deadline: new FormControl(null)
   });
 
@@ -52,7 +52,7 @@ export class NewTaskComponent {
   }
 
   getStarredControl() {
-    return this.taskForm.get('taskStarred') as FormControl;
+    return this.taskForm.get('starred') as FormControl;
   }
 
   getDeadlineControl() {
