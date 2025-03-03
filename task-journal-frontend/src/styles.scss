@@ -42,7 +42,7 @@ ng-select .ng-placeholder {
     @apply hidden;
 }
 
-.ng-value {
+app-select .ng-value {
     @apply flex;
     @apply flex-row;
     @apply gap-2;

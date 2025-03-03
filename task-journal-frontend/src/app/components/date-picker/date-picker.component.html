@@ -3,25 +3,53 @@
         <input
             id="day_input"
             placeholder="Day"
-            class="w-12 placeholder-gray-400"
+            class="w-8 placeholder-gray-400"
+            [(ngModel)]="day"
+            (ngModelChange)="inputChange()"
         />
     </div>
-    <app-select
+    <ng-select
         [items]="monthItems"
         [bindLabel]="'label'"
         [bindValue]="'value'"
         [multiple]="false"
         [searchable]="false"
         [clearable]="true"
-        class="w-44 p-2 border-2 border-gray-100 rounded-xl"
+        [(ngModel)]="month"
+        (ngModelChange)="inputChange()"
+        class="w-32 p-2 border-2 border-gray-100 rounded-xl"
         placeholder="Month"
         id="month_input"
-    ></app-select>
+    >
+    </ng-select>
     <div class="h-fit p-2 border-2 border-gray-100 rounded-xl">
         <input
             placeholder="Year"
             id="year_input"
-            class="w-16 placeholder-gray-400"
+            class="w-12 placeholder-gray-400"
+            [(ngModel)]="year"
+            (ngModelChange)="inputChange()"
         />
+    </div>
+    <div class="flex flex-row ml-6 h-fit w-fit self-center">
+        <div class="h-fit p-2 border-2 border-gray-100 rounded-xl">
+            <input
+                id="day_input"
+                placeholder="0h"
+                class="w-6 placeholder-gray-400 m-auto"
+                [(ngModel)]="hours"
+                (ngModelChange)="inputChange()"
+            />
+        </div>
+        <div class="text-base self-center mx-1">:</div>
+        <div class="h-fit p-2 border-2 border-gray-100 rounded-xl">
+            <input
+                id="day_input"
+                placeholder="0m"
+                class="w-6 placeholder-gray-400 m-auto"
+                [(ngModel)]="minutes"
+                (ngModelChange)="inputChange()"
+            />
+        </div>
     </div>
 </div>

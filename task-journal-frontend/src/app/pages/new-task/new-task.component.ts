@@ -54,4 +54,8 @@ export class NewTaskComponent {
   getStarredControl() {
     return this.taskForm.get('taskStarred') as FormControl;
   }
+
+  getDeadlineControl() {
+    return this.taskForm.get('deadline') as FormControl;
+  }
 }
