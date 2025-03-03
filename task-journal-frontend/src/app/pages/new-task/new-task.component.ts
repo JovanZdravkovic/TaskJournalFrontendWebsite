@@ -47,7 +47,11 @@ export class NewTaskComponent {
           return of(null);
         })
       )
-      .subscribe((data) => {});
+      .subscribe((data) => {
+        if(data.id !== null) {
+          this.router.navigateByUrl('/tasks');
+        }
+      });
     }
   }
 

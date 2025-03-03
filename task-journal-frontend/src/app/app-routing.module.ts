@@ -7,11 +7,13 @@ import { TaskHistoryComponent } from './pages/task-history/task-history.componen
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { NewTaskComponent } from './pages/new-task/new-task.component';
+import { TaskComponent } from './pages/task/task.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [AuthGuard], data: { authRequired: false } },
   { path: 'signup', component: SignupComponent, canActivate: [AuthGuard], data: { authRequired: false } },
   { path: 'tasks', component: TasksComponent, canActivate: [AuthGuard], data: { authRequired: true } },
+  { path: 'task/:id', component: TaskComponent, canActivate: [AuthGuard], data: { authRequired: true } },
   { path: 'task_history', component: TaskHistoryComponent, canActivate: [AuthGuard], data: { authRequired: true } },
   { path: 'new_task', component: NewTaskComponent, canActivate: [AuthGuard], data: { authRequired: true } },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: { authRequired: true } },
