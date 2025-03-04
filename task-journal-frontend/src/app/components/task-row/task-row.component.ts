@@ -11,7 +11,8 @@ export class TaskRowComponent {
 
   constructor() {}
 
-  completeTask(): void {
+  completeTask($event: any): void {
+    $event.stopPropagation();
     this.completeTaskCallback(this.task);
   }
 }

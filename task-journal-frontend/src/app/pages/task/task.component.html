@@ -1,4 +1,19 @@
-<div class="h-fit w-[40rem] mx-auto my-14 bg-white rounded-3xl shadow-lg">
-    <div class="flex flex-col w-full h-fit">
+<div class="h-fit w-fit mx-auto my-14 bg-white rounded-3xl shadow-lg p-8">
+    <div class="flex flex-col w-full h-fit gap-4">
+        <div class="flex flex-row gap-4">
+            <app-icon
+                [iconName]="task.taskIcon"
+            ></app-icon>
+            <div class="text-xl self-center text-el text-ellipsis">{{ task.taskName }}</div>
+            @if(task.starred) {
+                <img src="app/utils/assets/full_star.svg" class="size-10 self-center ml-auto" />
+            } @else {
+                <img src="app/utils/assets/empty_star.svg" class="size-10 self-center ml-auto" />
+            }
+        </div>
+        <div class="h-72 w-96 text-lg overflow-auto break-words border-2 border-gray-100 rounded-xl p-4">{{ task.taskDesc }}</div>
+        @if(task.deadline) {
+            <div class="text-lg">Deadline: {{ task.deadline }}</div>
+        }
     </div>
 </div>
