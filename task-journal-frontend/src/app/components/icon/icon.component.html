@@ -1,6 +1,6 @@
 <div 
     class="flex flex-row justify-center rounded-full shadow-md"
-    [title]="iconName === 'plus' ? 'Create new task' : ''"
+    [title]="findTitle()"
     [ngClass]="{
         'bg-[#DBE9FF]': iconName === 'job',
         'bg-[#E80000]': iconName === 'doctor_appointment',
