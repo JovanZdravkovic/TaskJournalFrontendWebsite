@@ -1,19 +1,29 @@
-<div class="h-fit w-fit mx-auto my-14 bg-white rounded-3xl shadow-lg p-8">
+<div class="h-fit w-lg mx-auto my-14 bg-white rounded-3xl shadow-lg p-8">
     <div class="flex flex-col w-full h-fit gap-4">
         <div class="flex flex-row gap-4">
             <app-icon
                 [iconName]="task.taskIcon"
             ></app-icon>
-            <div class="text-xl self-center text-el text-ellipsis">{{ task.taskName }}</div>
+            <div class="text-xl self-center text-el overflow-hidden text-ellipsis" title="Name">{{ task.taskName }}</div>
             @if(task.starred) {
-                <img src="app/utils/assets/full_star.svg" class="size-10 self-center ml-auto" />
+                <img src="app/utils/assets/full_star.svg" class="size-10 self-center ml-auto" title="Starred" />
             } @else {
-                <img src="app/utils/assets/empty_star.svg" class="size-10 self-center ml-auto" />
+                <img src="app/utils/assets/empty_star.svg" class="size-10 self-center ml-auto" title="Not starred" />
             }
         </div>
-        <div class="h-72 w-96 text-lg overflow-auto break-words border-2 border-gray-100 rounded-xl p-4">{{ task.taskDesc }}</div>
+        <div 
+            class="h-72 w-md text-lg overflow-auto break-words border-2 border-gray-100 rounded-xl p-4"
+            title="Description"
+        >
+        {{ task.taskDesc }}
+        </div>
         @if(task.deadline) {
-            <div class="text-lg">Deadline: {{ task.deadline }}</div>
+            <div 
+                class="text-lg" 
+                title="Deadline"
+            >
+            {{ task.deadline | date : 'dd MMM YYYY' }}
+            </div>
         }
     </div>
 </div>

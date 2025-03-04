@@ -1,16 +1,34 @@
 <div 
-    class="flex flex-row grow h-fit mx-4 py-2 rounded-3xl bg-gray-light-100 hover:bg-gray-light-200"
+    class="flex flex-row grow h-fit mx-4 py-2 rounded-3xl bg-gray-light-100 hover:bg-gray-light-200 cursor-pointer"
     [routerLink]="'/task/' + this.task.id"
 >
     <app-icon
         [iconName]="task.taskIcon"
         class="mx-4"
     ></app-icon>
-    <div class="ml-8 self-center text-ellipsis text-base">{{task.taskName}}</div>
-    <div 
-        class="cursor-pointer flex flex-row h-10 w-10 ml-auto mr-6 rounded-full self-center bg-primary-light hover:bg-primary duration-200"
-        (click)="completeTask($event)"
-    >
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="m-auto h-6 w-6 self-center" fill="#FFFFFF"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+    <div class="max-w-96 ml-8 self-center overflow-hidden text-ellipsis text-base">{{task.taskName}}</div>
+    @if(task.starred) {
+        <img 
+            src="app/utils/assets/full_star.svg"
+            class="size-6 self-center ml-2"
+            title="Starred" 
+        />
+    }
+    <div class="flex flex-row ml-auto mr-4 gap-16">
+        @if(task.deadline) {
+            <div 
+                class="flex flex-row text-base self-center"
+                title="Deadline"
+            >
+            {{ task.deadline | date : 'dd MMM YYYY' }}
+            </div>
+        }
+        <div 
+            class="cursor-pointer flex flex-row h-10 w-10 rounded-full self-center bg-primary-light hover:bg-primary duration-200"
+            title="Complete task"
+            (click)="completeTask($event)"
+        >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="m-auto h-6 w-6 self-center" fill="#FFFFFF"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/></svg>
+        </div>
     </div>
 </div>
