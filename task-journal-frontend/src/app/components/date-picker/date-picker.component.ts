@@ -8,11 +8,11 @@ import { FormControl } from '@angular/forms';
   styleUrl: './date-picker.component.scss'
 })
 export class DatePickerComponent {
-  day: number | string | null = null;
-  month: number | null = null;
-  year: number | string | null = null;
-  hours: number | string | null = null;
-  minutes: number | string | null = null;
+  @Input() day: number | string | null = null;
+  @Input() month: number | null = null;
+  @Input() year: number | string | null = null;
+  @Input() hours: number | string | null = null;
+  @Input() minutes: number | string | null = null;
   monthItems = months;
   @Input() control: FormControl | null = null;
 
