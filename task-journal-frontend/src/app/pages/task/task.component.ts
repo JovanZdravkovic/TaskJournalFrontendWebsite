@@ -37,4 +37,20 @@ export class TaskComponent implements OnInit {
       }
     });
   }
+
+  deleteTask(): void {
+    if(confirm('Do you want to delete this task?')) {
+      this.baseService.delete('task/' + this.id)
+      .pipe(
+        catchError((error) => {
+          return of(null);
+        })
+      )
+      .subscribe((data) => {
+        if(data.success) {
+          this.router.navigateByUrl('/tasks');
+        }
+      });
+    }
+  }
 }
