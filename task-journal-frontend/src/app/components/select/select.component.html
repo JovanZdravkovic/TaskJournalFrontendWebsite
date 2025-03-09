@@ -8,6 +8,7 @@
         [clearable]="clearable"
         [searchable]="searchable"
         [formControlName]="control"
+        (ngModelChange)="valueChange()"
         class="w-full self-center"
     >
         <ng-template ng-label-tmp let-item="item">

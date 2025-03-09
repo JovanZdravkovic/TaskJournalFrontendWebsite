@@ -32,6 +32,7 @@ export class SelectComponent {
   @Input() bindLabel: string = 'label';
   @Input() clearable: boolean = true;
   @Input() searchable: boolean = true;
+  @Input() changeCallbackFunction: Function = () => {};
 
   clearValue(id: any): void {
     let value: any[] = this.form.get(this.control)!.value;
@@ -42,5 +43,9 @@ export class SelectComponent {
         [this.control]: value
       });
     }
+  }
+
+  valueChange(): void {
+    this.changeCallbackFunction();
   }
 }
