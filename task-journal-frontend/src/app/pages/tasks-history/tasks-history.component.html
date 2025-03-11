@@ -1,0 +1,75 @@
+<div class="h-[70%] w-[40%] min-w-[60rem] mx-auto my-14 p-4 bg-white rounded-3xl shadow-lg">
+    <div class="flex flex-col w-full h-full gap-4 mt-2">
+        <div class="flex flex-row" [formGroup]="filtersForm">
+            <div 
+                class="p-2 h-fit w-fit ml-4 mr-2 border-2 border-gray-100 rounded-xl" 
+                title="Search by name"
+            >
+                <i class="fas fa-search text-gray-400"></i>
+                <input
+                    class="ml-2 w-44 placeholder-gray-400"
+                    placeholder="Search by name"
+                    formControlName="searchName"
+                />
+            </div>
+            <div 
+                class="grow h-fit max-w-72 p-2 mx-2 border-2 border-gray-100 rounded-xl"
+                title="Select icon"
+            >
+                <app-select
+                    [items]="icons"
+                    [multiple]="true"
+                    [icons]="true"
+                    [placeholder]="'Select icon'"
+                    [form]="filtersForm"
+                    [control]="'searchIcons'"
+                    [changeCallbackFunction]="getTasksHistoryCallback"
+                >
+                </app-select>
+            </div>
+            <div class="flex flex-row h-fit w-fit p-2 mx-2 gap-1 border-2 border-gray-100 rounded-xl">
+                <div 
+                    class="stroke-star-yellow fill-none hover:fill-star-yellow self-end cursor-pointer"
+                    [ngClass]="{'fill-star-yellow': getRatingControl().value >= 1}"
+                    (click)="setRatingControl(1)"
+                    title="One star execution rating"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" class="size-7">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                    </svg>  
+                </div>
+                <div 
+                    class="stroke-star-yellow fill-none hover:fill-star-yellow self-end cursor-pointer"
+                    [ngClass]="{'fill-star-yellow': getRatingControl().value >= 2}"
+                    (click)="setRatingControl(2)"
+                    title="Two star execution rating"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" class="size-9">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                    </svg>  
+                </div>
+                <div 
+                    class="stroke-star-yellow fill-none hover:fill-star-yellow self-end cursor-pointer"
+                    [ngClass]="{'fill-star-yellow': getRatingControl().value >= 3}"
+                    (click)="setRatingControl(3)"
+                    title="Three star execution rating"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" class="size-7">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z" />
+                    </svg>  
+                </div>
+                <label class="ml-2 self-center text-gray-400">
+                    Rating not selected
+                </label>
+            </div>
+            <button
+                type="button"
+                class="flex flex-row justify-center text-gray-400 hover:bg-gray-light-100 size-10 ml-auto mr-4 rounded-full"
+                title="Reset filters"
+                (click)="resetFilters()"
+            >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" class="size-7 self-center"><path d="M105.1 202.6c7.7-21.8 20.2-42.3 37.8-59.8c62.5-62.5 163.8-62.5 226.3 0L386.3 160 352 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l111.5 0c0 0 0 0 0 0l.4 0c17.7 0 32-14.3 32-32l0-112c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 35.2L414.4 97.6c-87.5-87.5-229.3-87.5-316.8 0C73.2 122 55.6 150.7 44.8 181.4c-5.9 16.7 2.9 34.9 19.5 40.8s34.9-2.9 40.8-19.5zM39 289.3c-5 1.5-9.8 4.2-13.7 8.2c-4 4-6.7 8.8-8.1 14c-.3 1.2-.6 2.5-.8 3.8c-.3 1.7-.4 3.4-.4 5.1L16 432c0 17.7 14.3 32 32 32s32-14.3 32-32l0-35.1 17.6 17.5c0 0 0 0 0 0c87.5 87.4 229.3 87.4 316.7 0c24.4-24.4 42.1-53.1 52.9-83.8c5.9-16.7-2.9-34.9-19.5-40.8s-34.9 2.9-40.8 19.5c-7.7 21.8-20.2 42.3-37.8 59.8c-62.5 62.5-163.8 62.5-226.3 0l-.1-.1L125.6 352l34.4 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L48.4 288c-1.6 0-3.2 .1-4.8 .3s-3.1 .5-4.6 1z"/></svg>
+            </button>
+        </div>
+    </div>
+</div>

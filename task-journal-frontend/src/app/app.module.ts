@@ -22,6 +22,8 @@ import { NewTaskComponent } from './pages/new-task/new-task.component';
 import { DatePickerComponent } from './components/date-picker/date-picker.component';
 import { StarCheckboxComponent } from './components/star-checkbox/star-checkbox.component';
 import { TaskComponent } from './pages/task/task.component';
+import { TasksHistoryComponent } from './pages/tasks-history/tasks-history.component';
+import { TaskHistoryRowComponent } from './components/task-history-row/task-history-row.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +40,8 @@ import { TaskComponent } from './pages/task/task.component';
     DatePickerComponent,
     StarCheckboxComponent,
     TaskComponent,
+    TasksHistoryComponent,
+    TaskHistoryRowComponent,
   ],
   imports: [
     BrowserModule,
