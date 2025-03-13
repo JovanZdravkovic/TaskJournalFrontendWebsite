@@ -26,6 +26,7 @@ export class TasksHistoryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.getTasksHistoryCallback = this.getTasksHistory.bind(this);
     this.getTasksHistory();
   }
 
