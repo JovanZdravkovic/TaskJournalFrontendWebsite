@@ -24,6 +24,7 @@ import { StarCheckboxComponent } from './components/star-checkbox/star-checkbox.
 import { TaskComponent } from './pages/task/task.component';
 import { TasksHistoryComponent } from './pages/tasks-history/tasks-history.component';
 import { TaskHistoryRowComponent } from './components/task-history-row/task-history-row.component';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { TaskHistoryRowComponent } from './components/task-history-row/task-hist
     TaskComponent,
     TasksHistoryComponent,
     TaskHistoryRowComponent,
+    StarRatingComponent,
   ],
   imports: [
     BrowserModule,

@@ -7,4 +7,8 @@
         class="mx-4"
     ></app-icon>
     <div class="max-w-96 ml-8 self-center overflow-hidden text-ellipsis text-base">{{taskHistory.taskName}}</div>
+    <app-star-rating
+        class="ml-auto mr-8 self-center"
+        [rating]="taskHistory.execRating"
+    ></app-star-rating>
 </div>
