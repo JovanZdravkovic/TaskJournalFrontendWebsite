@@ -1,1 +1,10 @@
-<p>task-history-row works!</p>
+<div 
+    class="flex flex-row grow h-fit mx-4 py-2 rounded-3xl bg-gray-light-100 hover:bg-gray-light-200 cursor-pointer"
+    [routerLink]="'/task_history/' + this.taskHistory.id"
+>
+    <app-icon
+        [iconName]="taskHistory.taskIcon"
+        class="mx-4"
+    ></app-icon>
+    <div class="max-w-96 ml-8 self-center overflow-hidden text-ellipsis text-base">{{taskHistory.taskName}}</div>
+</div>
