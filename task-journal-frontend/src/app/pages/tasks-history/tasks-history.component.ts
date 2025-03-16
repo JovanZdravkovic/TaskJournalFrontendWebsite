@@ -19,6 +19,8 @@ export class TasksHistoryComponent implements OnInit {
   });
   icons = taskIcons;
   getTasksHistoryCallback: Function = () => {};
+  getRatingControlCallback: Function = () => {};
+  setRatingControlCallback: Function = () => {};
 
   constructor(
     private router: Router,
@@ -27,6 +29,8 @@ export class TasksHistoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTasksHistoryCallback = this.getTasksHistory.bind(this);
+    this.getRatingControlCallback = this.getRatingControl.bind(this);
+    this.setRatingControlCallback = this.setRatingControl.bind(this);
     this.getTasksHistory();
   }
 
@@ -60,7 +64,11 @@ export class TasksHistoryComponent implements OnInit {
 
   setRatingControl(value: number) {
     let control = this.getRatingControl();
-    control.setValue(value);
+    if(value !== control.value) {
+      control.setValue(value);
+    } else {
+      control.setValue(null);
+    }
     this.getTasksHistory();
   }
 
