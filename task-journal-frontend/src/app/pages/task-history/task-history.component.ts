@@ -80,7 +80,7 @@ export class TaskHistoryComponent {
   updateTaskHistory(): void {
     let errors: boolean = this.checkEditFormErrors();
     if(!errors) {
-      this.baseService.put('task_history/update/' + this.id, this.createPayload())
+      this.baseService.put('task_history/' + this.id, this.createPayload())
       .pipe(
         catchError((error) => {
           return of(null);
