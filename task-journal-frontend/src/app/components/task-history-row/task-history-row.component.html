@@ -6,7 +6,14 @@
         [iconName]="taskHistory.taskIcon"
         class="mx-4"
     ></app-icon>
-    <div class="max-w-96 ml-8 self-center overflow-hidden text-ellipsis text-base">{{taskHistory.taskName}}</div>
+    <div class="max-w-72 ml-8 mr-2 self-center overflow-hidden text-ellipsis text-base">{{taskHistory.taskName}}</div>
+    <div class="h-8 w-fit mx-2 border-x-2 border-gray-300 self-center rounded-xl"></div>
+    <div 
+        class="grow mx-2 self-center overflow-hidden text-ellipsis text-base"
+        title="Execution comment"
+    >
+    {{taskHistory.execComment}}
+    </div>
     <app-star-rating
         class="ml-auto mr-8 self-center"
         [rating]="taskHistory.execRating"
