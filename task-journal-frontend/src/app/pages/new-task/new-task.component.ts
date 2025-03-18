@@ -4,6 +4,7 @@ import { BaseService } from '../../services/base/base.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError, of } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-new-task',
@@ -22,7 +23,8 @@ export class NewTaskComponent {
 
   constructor(
     private baseService: BaseService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   createPayload(): any {
@@ -44,11 +46,13 @@ export class NewTaskComponent {
       this.baseService.post('tasks', this.createPayload())
       .pipe(
         catchError((error) => {
+          this.toastr.error('Error while creating task', 'Error');
           return of(null);
         })
       )
       .subscribe((data) => {
         if(data.id !== null) {
+          this.toastr.success('Successfully created task', 'Success');
           this.router.navigateByUrl('/tasks');
         }
       });

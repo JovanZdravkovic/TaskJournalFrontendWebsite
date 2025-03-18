@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BaseService } from '../../services/base/base.service';
 import { taskIcons } from '../../components/select/select.constants';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-tasks',
@@ -20,7 +21,10 @@ export class TasksComponent implements OnInit{
   completeTaskCallback: Function = () => {};
   getTasksCallback: Function = () => {};
 
-  constructor(private baseService: BaseService) {}
+  constructor(
+    private baseService: BaseService,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getTasks();
@@ -45,6 +49,7 @@ export class TasksComponent implements OnInit{
     this.baseService.put("task/" + task.id).subscribe((data: any) => {
       if(data.success) {
         this.removeTask(task.id);
+        this.toastr.success('Successfully completed task', 'Success');
       }
     });
   }

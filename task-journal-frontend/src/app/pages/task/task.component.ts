@@ -4,6 +4,7 @@ import { catchError, of, switchMap } from 'rxjs';
 import { BaseService } from '../../services/base/base.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { taskIcons } from '../../components/select/select.constants';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-task',
@@ -20,7 +21,8 @@ export class TaskComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private baseService: BaseService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   initEditForm(): void {
@@ -82,11 +84,13 @@ export class TaskComponent implements OnInit {
       this.baseService.put('task/update/' + this.id, this.createPayload())
       .pipe(
         catchError((error) => {
+          this.toastr.error('Error while updating task', 'Error');
           return of(null);
         })
       )
       .subscribe((data) => {
         if(data.success) {
+          this.toastr.success('Successfully updated task', 'Success');
           this.editTask();
           this.loadTask();
         }
@@ -99,11 +103,13 @@ export class TaskComponent implements OnInit {
       this.baseService.delete('task/' + this.id)
       .pipe(
         catchError((error) => {
+          this.toastr.error('Error while deleting task', 'Error');
           return of(null);
         })
       )
       .subscribe((data) => {
         if(data.success) {
+          this.toastr.success('Successfully deleted task', 'Success');
           this.router.navigateByUrl('/tasks');
         }
       });

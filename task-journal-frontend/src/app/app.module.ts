@@ -26,6 +26,8 @@ import { TasksHistoryComponent } from './pages/tasks-history/tasks-history.compo
 import { TaskHistoryRowComponent } from './components/task-history-row/task-history-row.component';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { StarRatingPickerComponent } from './components/star-rating-picker/star-rating-picker.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,9 @@ import { StarRatingPickerComponent } from './components/star-rating-picker/star-
     SelectComponent,
     IconComponent,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({ preventDuplicates: true })
 ],
   providers: [
     provideHttpClient(),

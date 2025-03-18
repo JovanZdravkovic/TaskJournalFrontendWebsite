@@ -4,6 +4,7 @@ import { taskIcons } from '../../components/select/select.constants';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BaseService } from '../../services/base/base.service';
 import { catchError, of } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-task-history',
@@ -22,7 +23,8 @@ export class TaskHistoryComponent {
   constructor(
     private activatedRoute: ActivatedRoute,
     private baseService: BaseService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   initEditForm(): void {
@@ -83,11 +85,13 @@ export class TaskHistoryComponent {
       this.baseService.put('task_history/' + this.id, this.createPayload())
       .pipe(
         catchError((error) => {
+          this.toastr.error('Error while updating task history', 'Error');
           return of(null);
         })
       )
       .subscribe((data) => {
         if(data.success) {
+          this.toastr.success('Successfully updated task history', 'Success');
           this.editTaskHistory();
           this.loadTaskHistory();
         }
@@ -100,11 +104,13 @@ export class TaskHistoryComponent {
       this.baseService.delete('task_history/' + this.id)
       .pipe(
         catchError((error) => {
+          this.toastr.error('Error while deleting task history', 'Error');
           return of(null);
         })
       )
       .subscribe((data) => {
         if(data.success) {
+          this.toastr.success('Successfully deleted task history', 'Success');
           this.router.navigateByUrl('/tasks_history');
         }
       });
