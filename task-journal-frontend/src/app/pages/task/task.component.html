@@ -6,7 +6,7 @@
                     <app-icon
                         [iconName]="task.taskIcon"
                     ></app-icon>
-                    <div class="text-xl self-center text-el overflow-hidden text-ellipsis" title="Name">{{ task.taskName }}</div>
+                    <div class="text-xl self-center overflow-hidden text-ellipsis" title="Name">{{ task.taskName }}</div>
                     @if(task.starred) {
                         <img src="app/utils/assets/full_star.svg" class="size-10 self-center ml-auto" title="Starred" />
                     } @else {
