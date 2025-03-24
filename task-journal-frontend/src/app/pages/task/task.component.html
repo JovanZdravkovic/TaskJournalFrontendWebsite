@@ -85,12 +85,30 @@
                     placeholder="Enter task name"
                     formControlName="taskName"
                 />
+                @if(errorMap.has('taskName') && errorMap.get('taskName') === 'required') {
+                    <div class="text-danger">
+                        * Task name is required
+                    </div>
+                } @else if(errorMap.has('taskName') && errorMap.get('taskName') === 'maxlength') {
+                    <div class="text-danger">
+                        * Task name can't be longer than 50 characters
+                    </div>
+                }
                 <textarea 
                     class="inline p-4 h-72 w-md text-lg overflow-auto break-words border-2 border-gray-100 placeholder-gray-400 rounded-xl resize-none" 
                     id="task_desc_input"
                     placeholder="Enter task description"
                     formControlName="taskDesc"
                 ></textarea>
+                @if(errorMap.has('taskDesc') && errorMap.get('taskDesc') === 'required') {
+                    <div class="text-danger">
+                        * Task description is required
+                    </div>
+                } @else if(errorMap.has('taskDesc') && errorMap.get('taskDesc') === 'maxlength') {
+                    <div class="text-danger">
+                        * Task description can't be longer than 500 characters
+                    </div>
+                }
                 <app-date-picker
                     id="deadline_input"
                     [day]="getDeadlineDay()"

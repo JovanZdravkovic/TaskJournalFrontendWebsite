@@ -16,6 +16,7 @@ export class TaskHistoryComponent {
   taskHistory: any = {};
   editMode: boolean = false;
   editForm: FormGroup | null = null;
+  errorMap: Map<string, string> = new Map<string, string>();
   icons = taskIcons;
   getRatingControlCallback: Function = () => {};
   setRatingControlCallback: Function = () => {};
@@ -28,9 +29,10 @@ export class TaskHistoryComponent {
   ) {}
 
   initEditForm(): void {
+    this.errorMap = new Map<string, string>();
     this.editForm = new FormGroup({
-      execComment: new FormControl(this.taskHistory.execComment, Validators.required),
-      execRating: new FormControl(this.taskHistory.execRating, Validators.required),
+      execComment: new FormControl(this.taskHistory.execComment, Validators.maxLength(500)),
+      execRating: new FormControl(this.taskHistory.execRating),
     });
   }
 
@@ -75,8 +77,19 @@ export class TaskHistoryComponent {
   }
 
   checkEditFormErrors(): boolean {
-    // TODO: implement error checking logic
-    return false;
+    let errorExist = false;
+    Object.keys(this.editForm!.controls).forEach((controlName) => {
+      if(this.editForm!.get(controlName)?.hasError('required')) {
+        this.errorMap.set(controlName, 'required');
+        errorExist = true;
+      } else if(this.editForm!.get(controlName)?.hasError('maxlength')) {
+        this.errorMap.set(controlName, 'maxlength');
+        errorExist = true;
+      } else {
+        this.errorMap.set(controlName, '');
+      }
+    });
+    return errorExist;
   }
 
   updateTaskHistory(): void {
@@ -96,6 +109,8 @@ export class TaskHistoryComponent {
           this.loadTaskHistory();
         }
       });
+    } else {
+      this.toastr.error('Invalid form', 'Error');
     }
   }
 

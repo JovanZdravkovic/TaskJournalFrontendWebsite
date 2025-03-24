@@ -78,12 +78,30 @@
                         placeholder="Enter username"
                         formControlName="username"
                     />
+                    @if(errorMap.has('username') && errorMap.get('username') === 'required') {
+                        <div class="text-danger">
+                            * Username is required
+                        </div>
+                    } @else if(errorMap.has('username') && errorMap.get('username') === 'maxlength') {
+                        <div class="text-danger">
+                            * Username can't be longer than 50 characters
+                        </div>
+                    }
                     <input 
                         class="p-2 w-64 border-2 border-gray-100 rounded-xl placeholder-gray-400" 
                         id="email_input" 
                         placeholder="Enter email"
                         formControlName="email"
                     />
+                    @if(errorMap.has('email') && errorMap.get('email') === 'required') {
+                        <div class="text-danger">
+                            * Email is required
+                        </div>
+                    } @else if(errorMap.has('email') && errorMap.get('email') === 'email') {
+                        <div class="text-danger">
+                            * Invalid email format
+                        </div>
+                    }
                     <button 
                         type="button" 
                         class="h-fit w-fit p-2 ml-auto text-white text-base bg-primary rounded-xl hover:bg-primary-dark duration-300"

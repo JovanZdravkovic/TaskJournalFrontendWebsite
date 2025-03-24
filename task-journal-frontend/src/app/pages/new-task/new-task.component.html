@@ -21,6 +21,11 @@
                 class="mx-2 self-center"
             ></app-star-checkbox>
         </div>
+        @if(errorMap.has('taskName') && errorMap.get('taskName')) {
+            <div class="text-danger mx-2">
+                * Task name is required
+            </div>
+        }
         <label
             class="h-fit w-fit mx-2"
             for="task_icon_input"
@@ -53,6 +58,11 @@
             placeholder="Enter task description"
             formControlName="taskDesc"
         ></textarea>
+        @if(errorMap.has('taskDesc') && errorMap.get('taskDesc')) {
+            <div class="text-danger mx-2">
+                * Task description is required
+            </div>
+        }
         <label
             class="h-fit w-fit mx-2"
             for="deadline_input"

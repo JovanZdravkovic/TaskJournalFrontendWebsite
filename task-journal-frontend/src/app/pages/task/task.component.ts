@@ -16,6 +16,7 @@ export class TaskComponent implements OnInit {
   task: any = {};
   editMode: boolean = false;
   editForm: FormGroup | null = null;
+  errorMap: Map<string, string> = new Map<string, string>();
   icons = taskIcons;
 
   constructor(
@@ -26,10 +27,11 @@ export class TaskComponent implements OnInit {
   ) {}
 
   initEditForm(): void {
+    this.errorMap = new Map<string, string>();
     this.editForm = new FormGroup({
-      taskName: new FormControl(this.task.taskName, Validators.required),
+      taskName: new FormControl(this.task.taskName, [Validators.required, Validators.maxLength(50)]),
       taskIcon: new FormControl(this.task.taskIcon, Validators.required),
-      taskDesc: new FormControl(this.task.taskDesc, Validators.required),
+      taskDesc: new FormControl(this.task.taskDesc, [Validators.required, Validators.maxLength(500)]),
       starred: new FormControl(this.task.starred, Validators.required),
       deadline: new FormControl(this.task.deadline)
     });
@@ -74,8 +76,19 @@ export class TaskComponent implements OnInit {
   }
 
   checkEditFormErrors(): boolean {
-    // TODO: implement error checking logic
-    return false;
+    let errorExist = false;
+    Object.keys(this.editForm!.controls).forEach((controlName) => {
+      if(this.editForm!.get(controlName)?.hasError('required')) {
+        this.errorMap.set(controlName, 'required');
+        errorExist = true;
+      } else if(this.editForm!.get(controlName)?.hasError('maxlength')) {
+        this.errorMap.set(controlName, 'maxlength');
+        errorExist = true;
+      } else {
+        this.errorMap.set(controlName, '');
+      }
+    });
+    return errorExist;
   }
 
   updateTask(): void {
@@ -95,6 +108,8 @@ export class TaskComponent implements OnInit {
           this.loadTask();
         }
       });
+    } else {
+      this.toastr.error('Invalid form', 'Error');
     }
   }
 

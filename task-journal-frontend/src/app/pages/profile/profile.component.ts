@@ -18,6 +18,7 @@ export class ProfileComponent implements OnInit{
   selectedProfileIconName: string = '';
   profileIconUrl: string = 'http://localhost:8080/user/icon'
   iconForm: FormData = new FormData();
+  errorMap: Map<string, string> = new Map<string, string>();
 
   constructor(
     private http: HttpClient,
@@ -31,8 +32,9 @@ export class ProfileComponent implements OnInit{
   }
 
   initEditForm(): void {
+    this.errorMap = new Map<string, string>();
     this.editForm = new FormGroup({
-      username: new FormControl(this.profile.username, Validators.required),
+      username: new FormControl(this.profile.username, [Validators.required, Validators.maxLength(50)]),
       email: new FormControl(this.profile.email, [Validators.required, Validators.email]),
     });
   }
@@ -96,8 +98,22 @@ export class ProfileComponent implements OnInit{
   }
 
   checkEditFormErrors(): boolean {
-    // TODO: implement error checking logic
-    return false;
+    let errorExist = false;
+    Object.keys(this.editForm!.controls).forEach((controlName) => {
+      if(this.editForm!.get(controlName)?.hasError('required')) {
+        this.errorMap.set(controlName, 'required');
+        errorExist = true;
+      } else if(this.editForm!.get(controlName)?.hasError('email')) {
+        this.errorMap.set(controlName, 'email');
+        errorExist = true;
+      } else if(this.editForm!.get(controlName)?.hasError('maxlength')) {
+        this.errorMap.set(controlName, 'maxlength');
+        errorExist = true;
+      } else {
+        this.errorMap.set(controlName, '');
+      }
+    });
+    return errorExist;
   }
 
   uploadCredentials(): void {

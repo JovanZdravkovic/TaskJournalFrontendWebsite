@@ -20,6 +20,7 @@ export class NewTaskComponent {
     starred: new FormControl(false, Validators.required),
     deadline: new FormControl(null)
   });
+  errorMap: Map<string, boolean> = new Map<string, boolean>();
 
   constructor(
     private baseService: BaseService,
@@ -36,8 +37,16 @@ export class NewTaskComponent {
   }
 
   checkErrors(): boolean {
-    // TODO: implement error checking logic
-    return false;
+    let errorExist = false;
+    Object.keys(this.taskForm.controls).forEach((controlName) => {
+      if(this.taskForm.get(controlName)?.hasError('required')) {
+        this.errorMap.set(controlName, true);
+        errorExist = true;
+      } else {
+        this.errorMap.set(controlName, false);
+      }
+    });
+    return errorExist;
   }
 
   createNewTask(): void {
@@ -56,6 +65,8 @@ export class NewTaskComponent {
           this.router.navigateByUrl('/tasks');
         }
       });
+    } else {
+      this.toastr.error('Invalid task form', 'Error');
     }
   }
 
