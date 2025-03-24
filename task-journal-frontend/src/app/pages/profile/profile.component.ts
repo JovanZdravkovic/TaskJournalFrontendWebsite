@@ -47,6 +47,7 @@ export class ProfileComponent implements OnInit{
     .subscribe((data) => {
       if(data) {
         this.profile = data;
+        this.profileIconUrl = 'http://localhost:8080/user/icon?t=' + new Date().getTime();
         this.initEditForm();
       } else {
         this.router.navigateByUrl('/tasks');
