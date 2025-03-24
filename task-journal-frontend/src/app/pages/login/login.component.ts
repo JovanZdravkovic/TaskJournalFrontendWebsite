@@ -47,7 +47,7 @@ export class LoginComponent {
   login() {
     let errors: boolean = this.checkErrors();
     if(!errors) {
-      this.baseService.post('auth/login/', this.createPayload())
+      this.baseService.post('login', this.createPayload())
       .pipe(
         catchError((error) => {
           this.requestError = true;

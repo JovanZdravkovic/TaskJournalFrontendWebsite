@@ -17,25 +17,10 @@ export class AuthService {
   constructor(private baseService: BaseService) { }
 
   authenticate(): Observable<any> {
-    return this.baseService.post('auth/authenticate');
-  }
-
-  login(username: string, password: string): Observable<any> {
-    return this.baseService.post(
-      'auth/login',
-      {
-        username: username,
-        password: password
-      },
-      {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json',
-        }), 
-      }
-    );
+    return this.baseService.get('auth');
   }
 
   logout(): Observable<any> {
-    return this.baseService.post('auth/logout', {});
+    return this.baseService.post('logout', {});
   }
 }

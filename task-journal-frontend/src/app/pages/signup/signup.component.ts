@@ -59,7 +59,7 @@ export class SignupComponent {
   signup() {
     let errors: boolean = this.checkErrors();
     if(!errors) {
-      this.baseService.post('user', this.createPayload())
+      this.baseService.post('signup', this.createPayload())
       .pipe(
         catchError((error) => {
           this.requestError = true;
