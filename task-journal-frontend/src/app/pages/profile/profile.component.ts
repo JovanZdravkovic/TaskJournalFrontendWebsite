@@ -118,4 +118,20 @@ export class ProfileComponent implements OnInit{
       });
     }
   }
+
+  logout(): void {
+    if(confirm('Are you sure you want to log out?')) {
+      this.baseService.post('logout', {})
+      .pipe(
+        catchError((error) => {
+          this.toastr.error('Error while logging out', 'Error');
+          return of(null);
+        })
+      )
+      .subscribe((data) => {
+        this.toastr.success('Successfully logged out', 'Success');
+        this.router.navigateByUrl('/login');
+      });
+    }
+  }
 }
