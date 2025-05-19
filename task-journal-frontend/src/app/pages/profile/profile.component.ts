@@ -76,7 +76,7 @@ export class ProfileComponent implements OnInit{
     this.http.post('http://localhost:8080/user/icon', this.iconForm, { withCredentials: true })
     .pipe(
       catchError((error) => {
-        this.toastr.error('Error while uploading icon', 'Error');
+        this.toastr.error(error['error'], 'Error');
         return of(null);
       })
     )
