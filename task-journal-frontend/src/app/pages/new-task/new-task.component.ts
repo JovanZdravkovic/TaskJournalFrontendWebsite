@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { taskIcons } from '../../components/select/select.constants';
 import { BaseService } from '../../services/base/base.service';
 import { Router } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { catchError, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { OsCheckService } from '../../services/oscheck/os-check.service';
 
 @Component({
   selector: 'app-new-task',
   templateUrl: './new-task.component.html',
   styleUrl: './new-task.component.scss'
 })
-export class NewTaskComponent {
+export class NewTaskComponent implements OnInit {
   icons = taskIcons;
   taskForm = new FormGroup({
     taskName: new FormControl(null, Validators.required),
@@ -25,8 +26,13 @@ export class NewTaskComponent {
   constructor(
     private baseService: BaseService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private osCheck: OsCheckService
   ) {}
+
+  ngOnInit(): void {
+    this.osCheck.mobileCheck();
+  }
 
   createPayload(): any {
     let formPayload: any = {};

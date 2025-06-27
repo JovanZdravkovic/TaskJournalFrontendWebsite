@@ -3,6 +3,7 @@ import { BaseService } from '../../services/base/base.service';
 import { taskIcons } from '../../components/select/select.constants';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { OsCheckService } from '../../services/oscheck/os-check.service';
 
 @Component({
   selector: 'app-tasks',
@@ -23,10 +24,12 @@ export class TasksComponent implements OnInit{
 
   constructor(
     private baseService: BaseService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private osCheck: OsCheckService
   ) {}
 
   ngOnInit(): void {
+    this.osCheck.mobileCheck();
     this.getTasks();
     this.completeTaskCallback = this.completeTask.bind(this);
     this.getTasksCallback = this.getTasks.bind(this);

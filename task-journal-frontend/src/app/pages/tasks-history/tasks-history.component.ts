@@ -4,6 +4,7 @@ import { taskIcons } from '../../components/select/select.constants';
 import { Router } from '@angular/router';
 import { BaseService } from '../../services/base/base.service';
 import { catchError, of } from 'rxjs';
+import { OsCheckService } from '../../services/oscheck/os-check.service';
 
 @Component({
   selector: 'app-tasks-history',
@@ -24,10 +25,12 @@ export class TasksHistoryComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private baseService: BaseService
+    private baseService: BaseService,
+    private osCheck: OsCheckService
   ) {}
 
   ngOnInit(): void {
+    this.osCheck.mobileCheck();
     this.getTasksHistoryCallback = this.getTasksHistory.bind(this);
     this.getRatingControlCallback = this.getRatingControl.bind(this);
     this.setRatingControlCallback = this.setRatingControl.bind(this);

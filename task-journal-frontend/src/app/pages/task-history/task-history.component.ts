@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BaseService } from '../../services/base/base.service';
 import { catchError, of } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { OsCheckService } from '../../services/oscheck/os-check.service';
 
 @Component({
   selector: 'app-task-history',
@@ -25,7 +26,8 @@ export class TaskHistoryComponent {
     private activatedRoute: ActivatedRoute,
     private baseService: BaseService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private osCheck: OsCheckService
   ) {}
 
   initEditForm(): void {
@@ -37,6 +39,7 @@ export class TaskHistoryComponent {
   }
 
   ngOnInit(): void {
+    this.osCheck.mobileCheck();
     this.loadTaskHistory();
     this.getRatingControlCallback = this.getRatingControl.bind(this);
     this.setRatingControlCallback = this.setRatingControl.bind(this);

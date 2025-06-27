@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { BaseService } from '../../services/base/base.service';
 import { catchError, of } from 'rxjs';
+import { OsCheckService } from '../../services/oscheck/os-check.service';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.scss'
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
   signupForm = new FormGroup({
     username: new FormControl(null, Validators.required),
     email: new FormControl(null, [Validators.required, Validators.email]),
@@ -22,8 +23,13 @@ export class SignupComponent {
 
   constructor(
     private baseService: BaseService,
-    private router: Router
+    private router: Router,
+    private osCheck: OsCheckService
   ) {}
+
+  ngOnInit(): void {
+    this.osCheck.mobileCheck();
+  }
 
   createPayload(): any {
     let formPayload: any = {};

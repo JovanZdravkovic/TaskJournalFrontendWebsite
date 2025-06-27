@@ -1,15 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BaseService } from '../../services/base/base.service';
 import { FormControl, FormGroup, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { catchError, of } from 'rxjs';
+import { OsCheckService } from '../../services/oscheck/os-check.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
     username: new FormControl(null, Validators.required),
     password: new FormControl(null, Validators.required)
@@ -20,8 +21,13 @@ export class LoginComponent {
 
   constructor(
     private baseService: BaseService,
-    private router: Router
+    private router: Router,
+    private osCheck: OsCheckService
   ) {}
+
+  ngOnInit(): void {
+    this.osCheck.mobileCheck();
+  }
 
   createPayload(): any {
     let credentialsPayload: any = {};

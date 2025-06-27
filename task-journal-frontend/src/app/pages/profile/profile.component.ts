@@ -5,6 +5,7 @@ import { catchError, of } from 'rxjs';
 import { BaseService } from '../../services/base/base.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { OsCheckService } from '../../services/oscheck/os-check.service';
 
 @Component({
   selector: 'app-profile',
@@ -24,10 +25,12 @@ export class ProfileComponent implements OnInit{
     private http: HttpClient,
     private baseService: BaseService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private osCheck: OsCheckService
   ) { }
 
   ngOnInit(): void {
+    this.osCheck.mobileCheck();
     this.loadUser();
   }
 

@@ -5,6 +5,7 @@ import { BaseService } from '../../services/base/base.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { taskIcons } from '../../components/select/select.constants';
 import { ToastrService } from 'ngx-toastr';
+import { OsCheckService } from '../../services/oscheck/os-check.service';
 
 @Component({
   selector: 'app-task',
@@ -23,7 +24,8 @@ export class TaskComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private baseService: BaseService,
     private router: Router,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private osCheck: OsCheckService
   ) {}
 
   initEditForm(): void {
@@ -38,6 +40,7 @@ export class TaskComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.osCheck.mobileCheck();
     this.loadTask();
   }
 
