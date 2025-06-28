@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class BaseService {
 
-  baseUrl: string = "http://localhost:8080/";
+  baseUrl: string = "https://taskjournal.online/api/";
 
   constructor(private http: HttpClient) { }
 

@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit{
   editMode: boolean = false;
   editForm: FormGroup | null = null;
   selectedProfileIconName: string = '';
-  profileIconUrl: string = 'http://localhost:8080/user/icon'
+  profileIconUrl: string = 'https://taskjournal.online/api/user/icon'
   iconForm: FormData = new FormData();
   errorMap: Map<string, string> = new Map<string, string>();
 
@@ -52,7 +52,7 @@ export class ProfileComponent implements OnInit{
     .subscribe((data) => {
       if(data) {
         this.profile = data;
-        this.profileIconUrl = 'http://localhost:8080/user/icon?t=' + new Date().getTime();
+        this.profileIconUrl = 'https://taskjournal.online/api/icon?t=' + new Date().getTime();
         this.initEditForm();
       } else {
         this.router.navigateByUrl('/tasks');
@@ -76,7 +76,7 @@ export class ProfileComponent implements OnInit{
   }
 
   uploadSelectedProfileIcon(): void {
-    this.http.post('http://localhost:8080/user/icon', this.iconForm, { withCredentials: true })
+    this.http.post('https://taskjournal.online/api/user/icon', this.iconForm, { withCredentials: true })
     .pipe(
       catchError((error) => {
         this.toastr.error(error['error'], 'Error');
