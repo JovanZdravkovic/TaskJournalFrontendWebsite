@@ -48,7 +48,7 @@ Authentication is done via cookies and secured via `HttpOnly` and `Secure` flags
 **Note:** The version available on GitHub is production ready. The links used in the files `profile.component.ts` and `base.service.ts` are set to point to the backend hosted at taskjournal.online/api.
 For testing purposes set it to wherever your backend is hosted (TaskJournalBackend is set to be hosted at localhost:8080).
 
-**TODO:** Two separate environments, production and development, should be created and url links should be read from them instead being hardcoded in the source code. This feature will be implemented in the future.
+**TODO:** Two separate environments, production and development, should be created and url links should be read from the selected environment, instead of being hardcoded in the source code. This feature will be implemented in the future.
 
 ### Running the Angular app
 
