@@ -40,13 +40,14 @@ Authentication is done via cookies and secured via `HttpOnly` and `Secure` flags
 - TailwindCSS (version in project: 3.4.17)
 
 ###  Installation
-Before running the Angular app, ensure that Angular, Node.js, NPM, TypeScript and the project dependencies are properly installed.
-Following command will print out versions of Angular CLI, Node.js, NPM and TypeScript installed on your system: `ng version`.
-For TailwindCSS installation, refer to documentation available on their website: [tailwindcss.com](https://v3.tailwindcss.com/docs/installation).
-Node.js dependencies and their versions are available in the `package.json` file. Run the following command to install the required dependencies: `npm install`.
+- Before running the Angular app, ensure that Angular, Node.js, NPM, TypeScript and the project dependencies are properly installed.
+- Following command will print out versions of Angular CLI, Node.js, NPM and TypeScript installed on your system: `ng version`.
+- Node.js dependencies and their versions are available in the `package.json` file. Run the following command to install the required dependencies: `npm install`.
+- For TailwindCSS installation, refer to documentation available on their website: [tailwindcss.com](https://v3.tailwindcss.com/docs/installation).
 
 **Note:** The version available on GitHub is production ready. The links used in the files `profile.component.ts` and `base.service.ts` are set to point to the backend hosted at taskjournal.online/api.
 For testing purposes set it to wherever your backend is hosted (TaskJournalBackend is set to be hosted at localhost:8080).
+
 **TODO:** Two separate environments, production and development, should be created and url links should be read from them instead being hardcoded in the source code. This feature will be implemented in the future.
 
 ### Running the Angular app
